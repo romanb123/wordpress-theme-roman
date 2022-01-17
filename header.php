@@ -7,7 +7,7 @@
 
     <!-- Stylesheets
 	============================================= -->
-    <?php wp_head();?>
+    <?php wp_head(); ?>
 
     <!-- Document Title
 	============================================= -->
@@ -15,7 +15,7 @@
 
 </head>
 
-<body <?php body_class('stretched no-transition');?>>
+<body <?php body_class('stretched no-transition'); ?>>
 
     <!-- Document Wrapper
   ============================================= -->
@@ -117,15 +117,15 @@
                         <!-- ============================================================== -->
                         <?php
 
-if (has_nav_menu('primary')) {
-    wp_nav_menu([
-        'theme_location' => 'primary',
-        'cotainers' => false,
-        'fallback_cb' => false,
-        'depth' => 4,
-    ]);
-}
-?>
+                        if (has_nav_menu('primary')) {
+                            wp_nav_menu([
+                                'theme_location' => 'primary',
+                                'cotainers' => false,
+                                'fallback_cb' => false,
+                                'depth' => 4,
+                            ]);
+                        }
+                        ?>
 
                         <!-- top cart -->
                         <!-- ============================================================== -->

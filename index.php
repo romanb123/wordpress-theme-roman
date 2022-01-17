@@ -1,4 +1,4 @@
-<?php get_header()?>
+<?php get_header() ?>
 
 
 
@@ -44,21 +44,29 @@
                 <div id="posts">
 
                     <?php
-if (have_posts()) {
-    while (have_posts()) {
-        the_post();
+                    if (have_posts()) {
+                        while (have_posts()) {
+                            the_post();
 
-        get_template_part('partials/posts/content-exerpt');
-    }
-}
-?>
+                            get_template_part('partials/posts/content-exerpt');
+                        }
+                    }
+                    ?>
 
 
                 </div><!-- #posts end -->
 
                 <!-- Pagination
             ============================================= -->
-                <div class="row mb-3">
+                <div>
+                    <?php
+
+                    next_posts_link('&larr; Older');
+
+                    previous_posts_link('Newer &rarr;');
+
+                    ?>
+                    <!-- <div class="row mb-3">
                     <div class="col-12">
                         <a href="#" class="btn btn-outline-secondary float-left">
                             &larr; Older
@@ -67,32 +75,32 @@ if (have_posts()) {
                             Newer &rarr;
                         </a>
                     </div>
-                </div>
-                <!-- .pager end -->
+                </div> -->
+                    <!-- .pager end -->
 
-            </div><!-- .postcontent end -->
+                </div><!-- .postcontent end -->
 
-            <!-- Sidebar
+                <!-- Sidebar
           ============================================= -->
-            <div class="sidebar nobottommargin col_last">
-                <div class="sidebar-widgets-wrap">
+                <div class="sidebar nobottommargin col_last">
+                    <div class="sidebar-widgets-wrap">
 
-                    <?php
-if (is_active_sidebar('ju_sidebar-1')) {
-    dynamic_sidebar('ju_sidebar-1');
-}
+                        <?php
+                        if (is_active_sidebar('ju_sidebar-1')) {
+                            dynamic_sidebar('ju_sidebar-1');
+                        }
 
-?>
+                        ?>
+                    </div>
                 </div>
-            </div>
 
-        </div><!-- .sidebar end -->
+            </div><!-- .sidebar end -->
 
-    </div>
+        </div>
 
     </div>
 
 </section><!-- #content end -->
 
 
-<?php get_footer()?>
+<?php get_footer() ?>
