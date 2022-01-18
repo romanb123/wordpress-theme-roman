@@ -1,22 +1,16 @@
-<?php get_header() ?>
-
-
+<?php get_header(); ?>
 
 <!-- Content
-    ============================================= -->
+============================================= -->
 <section id="content">
 
     <div class="content-wrap">
 
-
-
         <div class="container clearfix">
 
             <!-- Post Content
-          ============================================= -->
+            ============================================= -->
             <div class="postcontent nobottommargin clearfix">
-
-
 
                 <?php
 
@@ -24,15 +18,12 @@
                     while (have_posts()) {
                         the_post();
 
-
                         global $post;
-                        $author_id = $post->post_author;
-                        $author_url = get_author_posts_url($author_id);
+                        $author_ID          =   $post->post_author;
+                        $author_URL         =   get_author_posts_url($author_ID);
+
                 ?>
-
-
-
-                <div class="single-post nobottommargin">
+                <div id="post-<?php the_ID(); ?>" <?php post_class('single-post nobottommargin'); ?>>
 
                     <!-- Single Post
                             ============================================= -->
@@ -47,46 +38,58 @@
                         <!-- Entry Meta
                                 ============================================= -->
                         <ul class="entry-meta clearfix">
-                            <li><i class="icon-calendar3"></i><?php echo get_the_date(); ?></li>
+                            <li><i class="icon-calendar3"></i> <?php echo get_the_date(); ?></li>
                             <li>
-                                <a href="<?php $author_url ?>">
+                                <a href="<?php echo $author_URL; ?>">
                                     <i class="icon-user"></i> <?php the_author(); ?>
                                 </a>
                             </li>
-                            <li><i class="icon-folder-open"><?php the_category(); ?></i>
-                            </li>
-                            <li><a href="#"><i class="icon-comments"></i><?php comments_number(); ?></a></li>
+                            <li><i class="icon-folder-open"></i> <?php the_category(' '); ?></li>
+                            <li><a href="#"><i class="icon-comments"></i> <?php comments_number(); ?></a></li>
                         </ul><!-- .entry-meta end -->
 
                         <!-- Entry Image
                                 ============================================= -->
-                        <?php
-                                if (has_post_thumbnail()) {
-                                ?>
-
-
                         <div class="entry-image">
-                            <a href="<?php the_permalink(); ?> ">
-                                <?php the_post_thumbnail(); ?>
-                            </a>
-                        </div>
+                            <?php
 
+                                    if (has_post_thumbnail()) {
+                                    ?>
+                            <div class="entry-image">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php
+                                                the_post_thumbnail('full');
+                                                ?>
+                                </a>
+                            </div>
+                            <?php
+                                    }
 
-                        <?php
-                                }
-                                ?>
+                                    ?>
+                        </div><!-- .entry-image end -->
 
                         <!-- Entry Content
                                 ============================================= -->
                         <div class="entry-content notopmargin">
 
-                            <?php the_content(); ?>
+                            <?php
+
+                                    the_content();
+
+                                    $defaults = array(
+                                        'before'           => '<p class="text-center">' . __('Pages:', 'udemy'),
+                                        'after'            => '</p>',
+                                    );
+
+                                    wp_link_pages($defaults);
+
+                                    ?>
                             <!-- Post Single - Content End -->
 
                             <!-- Tag Cloud
                                     ============================================= -->
                             <div class="tagcloud clearfix bottommargin">
-                                <?php the_tags(); ?>
+                                <?php the_tags('', ' '); ?>
                             </div><!-- .tagcloud end -->
 
                             <div class="clear"></div>
@@ -116,20 +119,14 @@
                         <div class="card-header">
                             <strong>
                                 Posted by
-                                <a href="#">John Doe</a>
+                                <a href="<?php echo $author_URL; ?>"><?php the_author(); ?></a>
                             </strong>
                         </div>
                         <div class="card-body">
                             <div class="author-image">
-                                <img src="images/author/1.jpg" class="rounded-circle">
+                                <?php echo get_avatar($author_ID, 90, '', false, ['class' => 'img-circle']); ?>
                             </div>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Dolores, eveniet, eligendi et nobis neque minus mollitia sit
-                            repudiandae ad repellendus recusandae blanditiis praesentium v
-                            itae ab sint earum voluptate velit beatae alias fugit
-                            accusantium laboriosam nisi reiciendis deleniti tenetur
-                            molestiae maxime id quaerat consequatur fugiat aliquam
-                            laborum nam aliquid. Consectetur, perferendis?
+                            <?php echo nl2br(get_the_author_meta('description')); ?>
                         </div>
                     </div><!-- Post Single - Author End -->
 
@@ -139,90 +136,84 @@
 
                     <div class="related-posts clearfix">
 
+                        <?php
+
+                                $categories             =   get_the_category();
+
+                                $rp_query               =   new WP_Query([
+                                    'posts_per_page'    =>  2,
+                                    'post__not_in'      =>  [$post->ID],
+                                    'cat'               =>  !empty($categories) ?  $categories[0]->term_id : null
+                                ]);
+
+                                if ($rp_query->have_posts()) {
+                                    while ($rp_query->have_posts()) {
+                                        $rp_query->the_post();
+
+                                ?>
                         <div class="mpost clearfix">
+                            <?php
+
+                                            if (has_post_thumbnail()) {
+                                            ?>
                             <div class="entry-image">
-                                <a href="#">
-                                    <img src="images/blog/small/10.jpg">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php the_post_thumbnail('thumbnail'); ?>
                                 </a>
                             </div>
+                            <?php
+                                            }
+
+                                            ?>
+
                             <div class="entry-c">
                                 <div class="entry-title">
                                     <h4>
-                                        <a href="#">
-                                            This is an Image Post
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php the_title(); ?>
                                         </a>
                                     </h4>
                                 </div>
                                 <ul class="entry-meta clearfix">
-                                    <li><i class="icon-calendar3"></i> 10th July 2014</li>
-                                    <li><i class="icon-comments"></i> 12</li>
+                                    <li><i class="icon-calendar3"></i> <?php echo get_the_date(); ?></li>
+                                    <li><i class="icon-comments"></i> <?php comments_number('0'); ?></li>
                                 </ul>
                                 <div class="entry-content">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                                    elit. Mollitia nisi perferendis.
+                                    <?php the_excerpt(); ?>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="mpost clearfix">
-                            <div class="entry-image">
-                                <a href="#"><img src="images/blog/small/20.jpg" alt="Blog Single"></a>
-                            </div>
-                            <div class="entry-c">
-                                <div class="entry-title">
-                                    <h4><a href="#">This is a Video Post</a></h4>
-                                </div>
-                                <ul class="entry-meta clearfix">
-                                    <li><i class="icon-calendar3"></i> 24th July 2014</li>
-                                    <li><i class="icon-comments"></i> 16</li>
-                                </ul>
-                                <div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                    elit. Mollitia nisi perferendis.</div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Comments
-                            ============================================= -->
-                    <div id="comments" class="clearfix">
-
-                        <h3 id="comments-title"><span>3</span> Comments</h3>
-
                         <?php
-                                if (comments_open() || get_comments_number()) {
-                                    comments_template();
+                                    }
+
+                                    wp_reset_postdata();
                                 }
+
                                 ?>
-
-
-
                     </div>
 
                     <?php
-                    }
-                }
-                    ?>
 
-                    <div class="sidebar nobottommargin col_last">
-                        <div class="sidebar-widgets-wrap">
-
-                            <?php
-                            if (is_active_sidebar('ju_sidebar-1')) {
-                                dynamic_sidebar('ju_sidebar-1');
+                            if (comments_open() || get_comments_number()) {
+                                comments_template();
                             }
 
                             ?>
-                        </div>
-                    </div>
+                </div>
+                <?php
+                    }
+                }
 
-                </div><!-- .sidebar end -->
+                ?>
 
-            </div>
+            </div><!-- .postcontent end -->
+
+            <?php get_sidebar(); ?>
 
         </div>
 
+    </div>
+
 </section><!-- #content end -->
 
-
-<?php get_footer() ?>
+<?php get_footer(); ?>
