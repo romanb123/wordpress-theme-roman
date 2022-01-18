@@ -9,7 +9,7 @@
                 <div class="container clearfix">
 
                     <div class="col_half">
-                        Copyrights &copy; 2017 All Rights Reserved by Udemy.<br>
+                        Copyrights &copy; 2017 All Rights Reserved by r-b-theme.<br>
                         <div class="copyright-links">
                             <a href="#">Privacy Policy</a>
                         </div>
@@ -48,7 +48,7 @@
 
         <!-- External JavaScripts
 ============================================= -->
-        <?php wp_footer()?>
+        <?php wp_footer() ?>
 
 
 

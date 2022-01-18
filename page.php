@@ -38,65 +38,65 @@
                     $author_URL         =   get_author_posts_url($author_ID);
 
                 ?>
-                <div class="single-post nobottommargin">
+                    <div class="single-post nobottommargin">
 
-                    <!-- Single Post
+                        <!-- Single Post
                         ============================================= -->
-                    <div class="entry clearfix">
+                        <div class="entry clearfix">
 
-                        <!-- Entry Image
+                            <!-- Entry Image
                             ============================================= -->
-                        <div class="entry-image">
-                            <?php
+                            <div class="entry-image">
+                                <?php
 
                                 if (has_post_thumbnail()) {
                                 ?>
-                            <div class="entry-image">
-                                <a href="<?php the_permalink(); ?>">
-                                    <?php
+                                    <div class="entry-image">
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php
                                             the_post_thumbnail('full');
                                             ?>
-                                </a>
-                            </div>
-                            <?php
+                                        </a>
+                                    </div>
+                                <?php
                                 }
 
                                 ?>
-                        </div><!-- .entry-image end -->
+                            </div><!-- .entry-image end -->
 
-                        <!-- Entry Content
+                            <!-- Entry Content
                             ============================================= -->
-                        <div class="entry-content notopmargin">
+                            <div class="entry-content notopmargin">
 
-                            <?php
+                                <?php
 
                                 the_content();
 
                                 $defaults = array(
-                                    'before'           => '<p class="text-center">' . __('Pages:', 'udemy'),
+                                    'before'           => '<p class="text-center">' . __('Pages:', 'r-b-theme'),
                                     'after'            => '</p>',
                                 );
 
                                 wp_link_pages($defaults);
 
                                 ?>
-                            <!-- Post Single - Content End -->
+                                <!-- Post Single - Content End -->
 
-                            <div class="clear"></div>
+                                <div class="clear"></div>
 
-                        </div>
-                    </div><!-- .entry end -->
+                            </div>
+                        </div><!-- .entry end -->
 
-                    <div class="line"></div>
+                        <div class="line"></div>
 
-                    <?php
+                        <?php
 
                         if (comments_open() || get_comments_number()) {
                             comments_template();
                         }
 
                         ?>
-                </div>
+                    </div>
                 <?php
                 }
 

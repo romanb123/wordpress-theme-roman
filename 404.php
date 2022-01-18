@@ -4,7 +4,7 @@
 ============================================= -->
 <section id="page-title">
     <div class="container clearfix">
-        <h1><?php _e('Page Not Found', 'udemy'); ?></h1>
+        <h1><?php _e('Page Not Found', 'r-b-theme'); ?></h1>
     </div>
 </section><!-- #page-title end -->
 
@@ -23,8 +23,8 @@
             <div class="col_half nobottommargin col_last">
 
                 <div class="heading-block nobottomborder">
-                    <h4><?php _e("Ooopps! The Page you were looking for, couldn't be found.", 'udemy'); ?></h4>
-                    <span><?php _e('Try searching for the best match or browse the links below:', 'udemy'); ?></span>
+                    <h4><?php _e("Ooopps! The Page you were looking for, couldn't be found.", 'r-b-theme'); ?></h4>
+                    <span><?php _e('Try searching for the best match or browse the links below:', 'r-b-theme'); ?></span>
                 </div>
 
                 <?php get_search_form(); ?>

@@ -48,32 +48,27 @@
                         <ul>
                             <li>
                                 <a href="#" class="si-facebook">
-                                    <span class="ts-icon"><i class="icon-facebook"></i></span><span
-                                        class="ts-text">Facebook</span>
+                                    <span class="ts-icon"><i class="icon-facebook"></i></span><span class="ts-text">Facebook</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="si-twitter">
-                                    <span class="ts-icon"><i class="icon-twitter"></i></span><span
-                                        class="ts-text">Twitter</span>
+                                    <span class="ts-icon"><i class="icon-twitter"></i></span><span class="ts-text">Twitter</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="si-instagram">
-                                    <span class="ts-icon"><i class="icon-instagram2"></i></span><span
-                                        class="ts-text">Instagram</span>
+                                    <span class="ts-icon"><i class="icon-instagram2"></i></span><span class="ts-text">Instagram</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="tel:+55.55.5555555" class="si-call">
-                                    <span class="ts-icon"><i class="icon-call"></i></span><span
-                                        class="ts-text">+55.55.5555555</span>
+                                    <span class="ts-icon"><i class="icon-call"></i></span><span class="ts-text">+55.55.5555555</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="mailto:info@email.com" class="si-email3">
-                                    <span class="ts-icon"><i class="icon-email3"></i></span><span
-                                        class="ts-text">info@email.com</span>
+                                    <span class="ts-icon"><i class="icon-email3"></i></span><span class="ts-text">info@email.com</span>
                                 </a>
                             </li>
                         </ul>
@@ -94,7 +89,7 @@
                 <!-- Logo
         ============================================= -->
                 <div id="logo">
-                    <a href="#" class="standard-logo">Udemy</a>
+                    <a href="#" class="standard-logo">r-b-theme</a>
                 </div><!-- #logo end -->
 
                 <div class="top-advert">
@@ -173,8 +168,7 @@
                                 <i class="icon-search3"></i><i class="icon-line-cross"></i>
                             </a>
                             <form action="#" method="get">
-                                <input type="text" name="q" class="form-control" placeholder="Type &amp; Hit Enter.."
-                                    value="">
+                                <input type="text" name="q" class="form-control" placeholder="Type &amp; Hit Enter.." value="">
                             </form>
                         </div><!-- #top-search end -->
 
